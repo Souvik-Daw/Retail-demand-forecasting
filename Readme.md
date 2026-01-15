@@ -24,7 +24,7 @@ retail-demand-forecasting/
 └── README.md
 ```
 
-Flow
+
 TRAINING:
 data → features → training → endpoint
 INFERENCE:
