@@ -25,11 +25,11 @@ retail-demand-forecasting/
 ```
 
 Flow
--> TRAINING:
+TRAINING:
 data → features → training → endpoint
--> INFERENCE:
+INFERENCE:
 UI → API → inference → API
--> MONITORING:
+MONITORING:
 predictions → drift → retrain → pipeline
 
 
