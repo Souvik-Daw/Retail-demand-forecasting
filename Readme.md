@@ -7,21 +7,24 @@ models deployed on AWS SageMaker.
 retail-demand-forecasting/
 ├── data/
 │   ├── raw/
-│   ├── processed/
+│   └── processed/
 ├── notebooks/
+├── logs/
 ├── src/
-│   ├── data/
+│   ├── data_pipeline/
 │   ├── features/
 │   ├── training/
 │   ├── inference/
 │   ├── monitoring/
+│   ├── utils/
 │   └── test/
-│   └── utils/
-├── pipelines/
 ├── api/
+│   └── routes/
 ├── infra/
-├── UI/
-└── README.md
+├── README.md
+├── requirements.txt
+├── .env
+└── .gitignore
 ```
 
 
