@@ -11,11 +11,12 @@ retail-demand-forecasting/
 ├── notebooks/
 ├── logs/
 ├── src/
-│   ├── data_pipeline/
+│   ├── data processing/
 │   ├── features/
 │   ├── training/
 │   ├── inference/
 │   ├── monitoring/
+│   ├── pipeline/
 │   ├── utils/
 │   └── test/
 ├── api/
@@ -43,3 +44,20 @@ Schema
 ----------------------------------------------------------------
 id | date       | store_nbr | family       | sales | onpromotion
 ----------------------------------------------------------------
+
+XGboost
+X = [
+  lag_1, lag_7, lag_14,
+  roll_7_mean, roll_14_mean,
+  day_of_week, month,year,
+  onpromotion, store_nbr, family
+]
+y = sales
+
+
+Custom NN
+X = [
+  day_of_week, month,year,
+  onpromotion, store_nbr, family
+]
+y = sales
