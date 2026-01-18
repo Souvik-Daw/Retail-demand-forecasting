@@ -5,8 +5,6 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler, MinMaxScaler
 from sklearn.impute import SimpleImputer
 from src.utils.exception import CustomException
 
-# --- PREPROCESSOR FACTORIES ---
-
 def get_xgboost_preprocessor():
     """
     Pipeline for XGBoost (WITH LAGS).

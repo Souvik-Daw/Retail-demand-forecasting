@@ -10,7 +10,6 @@ def add_date_features(df: pd.DataFrame) -> pd.DataFrame:
     """
     try:
         df = df.copy()
-        # Ensure date format
         if not pd.api.types.is_datetime64_any_dtype(df['date']):
             df['date'] = pd.to_datetime(df['date'])
             

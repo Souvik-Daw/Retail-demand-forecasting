@@ -3,8 +3,6 @@ from pydantic import BaseModel
 from typing import List
 import os
 import sys
-
-# Update imports to match your folder structure
 from src.inference.predictor import ModelPredictor
 from src.inference.preprocess import Preprocessor
 from src.inference.postprocess import Postprocessor
@@ -12,16 +10,14 @@ from src.utils.logger import logger
 
 router = APIRouter()
 
-# Initialize classes
 predictor = ModelPredictor(region_name="us-east-1")
 preprocessor = Preprocessor()
 postprocessor = Postprocessor()
 
 class ForecastRequest(BaseModel):
-    model_type: str  # "xgboost" or "lstm"
+    model_type: str 
     data: List[List[float]] 
 
-# Set your Endpoint Names here (or use .env file)
 XGB_ENDPOINT = os.getenv("XGB_ENDPOINT_NAME", "retail-xgb-endpoint-2023-...") 
 LSTM_ENDPOINT = os.getenv("LSTM_ENDPOINT_NAME", "retail-lstm-endpoint-2023-...")
 
@@ -32,7 +28,7 @@ async def get_forecast(request: ForecastRequest):
         logger.info(f"API Request received for {model_type}")
         
         if model_type == "xgboost":
-            # 1. Preprocess using preprocessor_xgboost.pkl logic (if added)
+            # 1. Preprocess 
             payload = preprocessor.preprocess_xgboost(request.data)
             
             # 2. Predict
@@ -42,7 +38,7 @@ async def get_forecast(request: ForecastRequest):
             forecast = postprocessor.postprocess_xgboost(raw_response)
 
         elif model_type == "lstm":
-            # 1. Preprocess using preprocessor_nn.pkl
+            # 1. Preprocess 
             payload = preprocessor.preprocess_lstm(request.data)
             
             # 2. Predict

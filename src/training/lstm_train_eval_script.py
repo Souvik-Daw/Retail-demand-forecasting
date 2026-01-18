@@ -9,7 +9,6 @@ if __name__ == "__main__":
 
     print(f"[Info] TensorFlow Version: {tf.__version__}")
 
-
     parser = argparse.ArgumentParser()
 
     # Hyperparameters

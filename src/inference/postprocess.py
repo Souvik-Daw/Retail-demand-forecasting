@@ -4,18 +4,28 @@ import numpy as np
 from src.utils.exception import CustomException
 
 class Postprocessor:
-    def postprocess_xgboost(self, raw_response: bytes) -> list:
+    def postprocess_xgboost(self, raw_response) -> list:
         try:
-            response_str = raw_response.decode("utf-8")
-            # XGBoost returns CSV string: "100.5, 200.1"
-            predictions = [float(x) for x in response_str.replace('\n', ',').split(',') if x.strip()]
+            
+            if isinstance(raw_response, list):
+                return np.array(raw_response).flatten().tolist()
+
+            if isinstance(raw_response, bytes):
+                response_str = raw_response.decode("utf-8")
+            else:
+                response_str = str(raw_response)
+
+            clean_str = response_str.replace('[', '').replace(']', '').replace('\n', ',')
+
+            predictions = [float(x) for x in clean_str.split(',') if x.strip()]
+            
             return predictions
+
         except Exception as e:
             raise CustomException(e, sys)
 
     def postprocess_lstm(self, raw_response: bytes) -> list:
         try:
-            # TF Serving returns JSON: {"predictions": [[50.5], [60.1]]}
             response_json = json.loads(raw_response.decode("utf-8"))
             
             if "predictions" in response_json:

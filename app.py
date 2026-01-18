@@ -23,7 +23,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify your frontend URL here
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -43,6 +43,5 @@ async def root():
 
 if __name__ == "__main__":
     logger.info("Starting API Server...")
-    # 'app:app' tells uvicorn to look for the file 'app.py' and the object 'app'
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
 

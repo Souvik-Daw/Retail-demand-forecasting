@@ -69,3 +69,6 @@ X = [
   onpromotion, store_nbr, family
 ]
 y = sales
+
+Selected the best model for the current test (XGboost), screenshot below 
+![alt text](<xgboost API output.png>)

@@ -11,10 +11,8 @@ def split_data_time_series(df, test_days=16):
     """
     Splits data based on time. The last 'test_days' become the test set.
     """
-    # Ensure sorted by date
     df = df.sort_values(by=['date', 'store_nbr', 'family'])
     
-    # Find cutoff date
     max_date = df['date'].max()
     cutoff_date = max_date - pd.Timedelta(days=test_days)
     

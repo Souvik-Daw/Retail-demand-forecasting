@@ -29,3 +29,4 @@ venv/
 logs/
 models/
 artifacts/
+backup/

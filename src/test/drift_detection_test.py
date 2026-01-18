@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import pytest
 
-# Add root to path so we can import src
 sys.path.append(os.getcwd())
 
 from src.monitoring.drift_detection import DriftDetector
